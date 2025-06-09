@@ -1,6 +1,10 @@
 import axios from "axios";
+import dotenv from "dotenv";
 
-const ROOT_API = import.meta.env.ROOT_API || "http://localhost:2000";
+dotenv.config();
+
+const ROOT_API =
+  import.meta.env.ROOT_API || "https://destinara-api.leapcell.app";
 
 export const LoginApi = async (email, password) => {
   if (!email || !password) {
