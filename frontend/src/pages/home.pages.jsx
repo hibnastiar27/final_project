@@ -8,7 +8,7 @@ export const Home = () => {
 
       <Carousel destinations={destinations} />
 
-      <section className="mt-4 lg:mx-20">
+      <section className="m-4 md:mx-10 lg:mx-20">
         <h2 className="mb-4 text-2xl font-bold">Rekomendasi</h2>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

@@ -52,7 +52,7 @@ export const Login = () => {
   };
 
   return (
-    <AuthLayouts>
+    <AuthLayouts style=" h-screen ">
       <div className="flex flex-col justify-center w-[350px] p-4 bg-white border border-gray-200 shadow-xl rounded-2xl">
         <img
           className="w-32 mx-auto"

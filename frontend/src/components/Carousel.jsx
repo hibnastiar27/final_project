@@ -68,7 +68,7 @@ export const Carousel = ({ destinations = [], interval = 3000 }) => {
             {/* <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent" /> */}
             {/* <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent" /> */}
           </div>
-          <div className="relative z-10 flex flex-col justify-end h-full pb-4 lg:mx-20 text-[#2F92B7]">
+          <div className="relative z-10  flex flex-col justify-end h-full pb-4 mx-4 md:mx-10 lg:mx-20 text-[#2F92B7]">
             <p className="flex items-center text-sm text-black md:text-lg">
               <MapPin size={16} className="mr-1 text-red-500" />
               {item.location}
