@@ -1,10 +1,11 @@
 import { MapPin } from "lucide-react";
 import { Link } from "react-router";
+import { changeToSlug } from "../utils/ChangeToSlug";
 
 export const CardDestinasi = ({ image, title, location, id }) => {
   return (
     <Link
-      to={`/destinations/${id}`}
+      to={`/destinations/${changeToSlug(title)}`}
       className="block overflow-hidden transition-shadow bg-white shadow-md rounded-2xl hover:shadow-lg"
     >
       {/* Image */}

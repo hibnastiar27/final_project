@@ -2,6 +2,8 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useNavigate } from "react-router";
 import { useRef, useEffect } from "react";
+import { changeToSlug } from "../utils/ChangeToSlug";
+import { MapPin } from "lucide-react";
 
 export const Carousel = ({ destinations = [], interval = 3000 }) => {
   const navigate = useNavigate();
@@ -52,7 +54,7 @@ export const Carousel = ({ destinations = [], interval = 3000 }) => {
         <div
           key={index}
           className="keen-slider__slide relative h-[500px] md:h-[500px] cursor-pointer"
-          onClick={() => navigate(`/destinations/${item.id}`)}
+          onClick={() => navigate(`/destinations/${changeToSlug(item.title)}`)}
         >
           <div
             className="absolute inset-0 bg-center bg-cover"
@@ -66,9 +68,12 @@ export const Carousel = ({ destinations = [], interval = 3000 }) => {
             {/* <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent" /> */}
             {/* <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent" /> */}
           </div>
-          <div className="relative z-10 flex flex-col justify-end h-full p-6 text-[#2F92B7]">
+          <div className="relative z-10 flex flex-col justify-end h-full pb-4 lg:mx-20 text-[#2F92B7]">
+            <p className="flex items-center text-sm text-black md:text-lg">
+              <MapPin size={16} className="mr-1 text-red-500" />
+              {item.location}
+            </p>
             <h2 className="text-2xl font-bold md:text-4xl">{item.title}</h2>
-            <p className="text-sm text-black md:text-lg">{item.location}</p>
           </div>
         </div>
       ))}
