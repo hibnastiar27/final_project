@@ -1,13 +1,27 @@
-import express from "express";
 import {
-  RegisterController,
-  LoginController,
-} from "../controller/auth.controller.js"; // tambahkan .js jika pakai ESM
+  RegisterHandler,
+  LoginHandler,
+  LogoutHandler,
+} from "../controllers/auth.controller.js";
 
-const router = express.Router();
+const root_path = "/auth";
 
-router.post("/register", RegisterController);
-router.post("/login", LoginController);
-// router.post("/login", login);
+const authRoutes = [
+  {
+    method: "POST",
+    path: `${root_path}/register`,
+    handler: RegisterHandler,
+  },
+  {
+    method: "POST",
+    path: `${root_path}/login`,
+    handler: LoginHandler,
+  },
+  {
+    method: "POST",
+    path: `${root_path}/logout`,
+    handler: LogoutHandler,
+  },
+];
 
-export default router;
+export default authRoutes;

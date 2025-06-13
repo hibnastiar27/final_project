@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AuthLayouts } from "../layouts/auth.layouts";
 import axios from "axios";
 import { LogoDestinara } from "../assets";
+import { SurveyApi } from "../api/survey.api";
 
 export const Survey = () => {
   const [formData, setFormData] = useState({
@@ -30,14 +31,14 @@ export const Survey = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formData);
-
     const payload = {
       aktifitas: formData.aktifitas.map((a) => a.toLowerCase()).join(", "),
       jarak: formData.jarak.toLowerCase(),
       age: formData.age.toLowerCase(),
       frekuensi: formData.frekuensi.toLowerCase(),
     };
+
+    const { aktifitas } = payload;
 
     // Validasi field required
     if (!payload.aktifitas || payload.aktifitas.trim() === "") {
@@ -60,10 +61,10 @@ export const Survey = () => {
       return;
     }
 
-    // Simpan ke localStorage
-    localStorage.setItem("survey_result", JSON.stringify(payload));
-    alert("Survey berhasil disimpan ke localStorage");
-    window.location.href = "/";
+    // // Simpan ke localStorage
+    // localStorage.setItem("survey_result", JSON.stringify(payload));
+    // alert("Survey berhasil disimpan ke localStorage");
+    // window.location.href = "/";
 
     // e.preventDefault();
 
@@ -74,17 +75,26 @@ export const Survey = () => {
     //   frekuensi: formData.frekuensi.toLowerCase(),
     // };
 
-    // try {
-    //   const response = await axios.post(
-    //     "/generate_rekomendasi?max_recom=2&treshold=0.5",
-    //     payload
-    //   );
-    //   console.log("Response:", response.data);
-    //   alert("Berhasil dikirim!");
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   alert("Gagal mengirim data.");
-    // }
+    const max_recom = 5;
+    const treshold = 0.5;
+
+    console.log(payload.age);
+    console.log(max_recom);
+    console.log(treshold);
+
+    try {
+      const response = await SurveyApi({ aktifitas, max_recom, treshold });
+
+      if (response.status === "success") {
+        alert("Survey berhasil disimpan ke localStorage");
+        window.location.href = "/";
+      } else {
+        alert("Survey gagal disimpan ke localStorage");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Gagal mengirim data.");
+    }
   };
 
   return (
