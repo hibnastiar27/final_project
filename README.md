@@ -185,8 +185,7 @@ final_project/
 ## 🗺️ App Architecture
 
 <div align="center">
-  <img width="293" alt="Destinara-Architecturefix" src="https://github.com/user-attachments/assets/921596dd-ec5a-4d9c-b8a5-bfea2b6a1859" />
-
+  ![Destinara-Architecturefix](https://github.com/user-attachments/assets/3c737c37-e048-4244-89d8-2f67d3fce611)
   
   *Arsitektur sistem Destinara menunjukkan alur utama data dari FrontEnd menuju BackEnd  yang kemudian berinteraksi dua arah dengan Database dan model Machine Learning.Hasil dari proses tersebut dikembalikan ke FrontEnd sebagai respon yang telah diproses.*
 </div>
